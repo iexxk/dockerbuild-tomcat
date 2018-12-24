@@ -4,7 +4,7 @@ tomcat的dockerfile bulid项目
 #### 功能
 
 1. 添加中国时区
-2. 添加字体
+2. 添加字体(默认添加宋体)
 
 #### 使用
 
@@ -19,7 +19,7 @@ COPY target/app.war /usr/local/tomcat/webapps/
 #健康检查 -s 静默模式，不下载文件
 #HEALTHCHECK CMD wget -s http://127.0.0.1:14030/actuator/health || exit 1
 #启动命令
-#添加字体,也可以直接在基础镜像里面添加
+#添加其他字体，放入这个目录,也可以直接在基础镜像里面添加
 COPY chinese /usr/share/fonts/chinese
 CMD ["catalina.sh", "run"]
 ```

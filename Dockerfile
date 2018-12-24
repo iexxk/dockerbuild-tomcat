@@ -6,5 +6,5 @@ FROM tomcat:8-alpine
 RUN apk add --no-cache tzdata ttf-dejavu \
      && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \ 
 	 && echo "Asia/Shanghai" > /etc/timezone
-#如果要自带字体，取消注释这句	 
-#COPY chinese /usr/share/fonts/chinese
+#拷贝宋体,如果不要自带字体，注释这句	 
+COPY chinese /usr/share/fonts/chinese
