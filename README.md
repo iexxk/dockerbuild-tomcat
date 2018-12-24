@@ -29,7 +29,7 @@ Tags:
 
 ```dockerfile
 #基础镜像选择alpine 小巧安全流行方便
-FROM www.3sreform.com:14005/tomcat:8-alpine-ffmpeg
+FROM exxk/tomcat:8-alpine-ffmpeg
 # 覆写nginx配置,需要打开注释
 #COPY nginx.conf /etc/nginx/nginx.conf
 #复制固定路径下打包好的jar包(target/*.jar)并重命名到容器跟目录(/app.jar)，或ADD
@@ -46,7 +46,7 @@ version: '3.2'
 services:
   hikvision:
     restart: always
-    image: manage/test/ygl/hikvision:latest
+    image: extentffmpeg:latest
     volumes:
       - /logs/ygl-hikvision:/app/log
     ports:
