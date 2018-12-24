@@ -1,6 +1,10 @@
 # dockerbuild-tomcat
 tomcat的dockerfile bulid项目
 
+### 基础镜像
+
+[tomcat:8-alpine](https://hub.docker.com/_/tomcat/)
+
 #### 功能
 
 1. 添加中国时区
