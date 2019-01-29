@@ -160,7 +160,7 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
                prefix="localhost_access_log" suffix=".txt"
                pattern="%h %l %u %t &quot;%r&quot; %s %b" />
-         <Context path="" docBase="manager" reloadable="true"></Context>
+        <!-- <Context path="" docBase="manager" reloadable="true"></Context> -->
       </Host>
     </Engine>
   </Service>
