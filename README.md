@@ -26,7 +26,9 @@ Tags:
 #基础镜像选择alpine 小巧安全流行方便
 FROM exxk/tomcat:8-alpine-cst
 #复制固定路径下打包好的jar包(target/*.jar)并重命名到容器跟目录(/app.jar)，或ADD
-COPY target/app.war /usr/local/tomcat/webapps/
+#COPY target/app.war /usr/local/tomcat/webapps/
+#防止重复启动，清除webapps下所有自带应用，然后server.xml 里面的dobase指向了新的/data/app ，为了防止重复启动
+COPY target/app.war /data/app/
 #修改tomcat默认端口
 #RUN sed -i 's|port="8080"|port="80"|g' /usr/local/tomcat/conf/server.xml
 #健康检查 -s 静默模式，不下载文件
@@ -50,6 +52,8 @@ services:
     environment:
     # 远程debug
       CATALINA_OPTS: "-Xdebug -Xrunjdwp:transport=dt_socket,address=5005,suspend=n,server=y"
+    # 启动参数  
+      JAVA_OPTS: "-Xms512m -Xmx1024m -Xss1024K -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=512m"
 #      MYSQL_URL: mysql
     ports:
       - 14083:8080
